@@ -14,90 +14,125 @@
       <p>Please complete this form with your contact and travel information.</p>
     </header>
 
-    <form id="officer-form">
+    <!-- Fixed: Added action fallback and explicit POST method to keep form semantically correct -->
+    <form id="officer-form" action="#" method="POST">
+      
       <section>
         <h2>Officer information</h2>
 
-        <label for="name">Name <span aria-hidden="true">*</span></label>
-        <input id="name" name="name" autocomplete="name" required>
+        <div class="form-group">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
 
-        <label for="designation">Designation <span aria-hidden="true">*</span></label>
-        <input id="designation" name="designation" required>
+        <div class="form-group">
+          <label for="designation">Designation <span aria-hidden="true">*</span></label>
+          <input type="text" id="designation" name="designation" required>
+        </div>
 
-        <label for="employeeId">Employee ID <span aria-hidden="true">*</span></label>
-        <input id="employeeId" name="employeeId" required>
+        <div class="form-group">
+          <label for="employeeId">Employee ID <span aria-hidden="true">*</span></label>
+          <input type="text" id="employeeId" name="employeeId" required>
+        </div>
 
-        <label for="gender">Male / Female</label>
-        <select id="gender" name="gender">
-          <option value="">Select</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Prefer not to say</option>
-        </select>
+        <div class="form-group">
+          <!-- Fixed: Changed from 'Male / Female' to 'Gender' to reflect all select options -->
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
 
-        <label for="office">Office <span aria-hidden="true">*</span></label>
-        <input id="office" name="office" required>
+        <div class="form-group">
+          <label for="office">Office <span aria-hidden="true">*</span></label>
+          <input type="text" id="office" name="office" required>
+        </div>
       </section>
 
       <section>
         <h2>Expected arrival at Mysore</h2>
 
-        <label for="arrivalDate">Date <span aria-hidden="true">*</span></label>
-        <input id="arrivalDate" name="arrivalDate" type="date" required>
+        <div class="form-group">
+          <label for="arrivalDate">Date <span aria-hidden="true">*</span></label>
+          <input id="arrivalDate" name="arrivalDate" type="date" required>
+        </div>
 
-        <label for="arrivalTime">Time <span aria-hidden="true">*</span></label>
-        <input id="arrivalTime" name="arrivalTime" type="time" required>
+        <div class="form-group">
+          <label for="arrivalTime">Time <span aria-hidden="true">*</span></label>
+          <input id="arrivalTime" name="arrivalTime" type="time" required>
+        </div>
 
-        <label for="arrivalMode">Mode of journey <span aria-hidden="true">*</span></label>
-        <select id="arrivalMode" name="arrivalMode" required>
-          <option value="">Select a mode</option>
-          <option>Air</option>
-          <option>Bus</option>
-          <option>Train</option>
-        </select>
+        <div class="form-group">
+          <label for="arrivalMode">Mode of journey <span aria-hidden="true">*</span></label>
+          <select id="arrivalMode" name="arrivalMode" required>
+            <option value="">Select a mode</option>
+            <option value="Air">Air</option>
+            <option value="Bus">Bus</option>
+            <option value="Train">Train</option>
+          </select>
+        </div>
 
-        <label for="arrivalNumber">Flight / bus / train number</label>
-        <input id="arrivalNumber" name="arrivalNumber">
+        <div class="form-group">
+          <label for="arrivalNumber">Flight / bus / train number</label>
+          <input type="text" id="arrivalNumber" name="arrivalNumber">
+        </div>
       </section>
 
       <section>
         <h2>Expected departure from Mysore</h2>
 
-        <label for="departureDate">Date <span aria-hidden="true">*</span></label>
-        <input id="departureDate" name="departureDate" type="date" required>
+        <div class="form-group">
+          <label for="departureDate">Date <span aria-hidden="true">*</span></label>
+          <input id="departureDate" name="departureDate" type="date" required>
+        </div>
 
-        <label for="departureTime">Time <span aria-hidden="true">*</span></label>
-        <input id="departureTime" name="departureTime" type="time" required>
+        <div class="form-group">
+          <label for="departureTime">Time <span aria-hidden="true">*</span></label>
+          <input id="departureTime" name="departureTime" type="time" required>
+        </div>
 
-        <label for="departureMode">Mode of journey <span aria-hidden="true">*</span></label>
-        <select id="departureMode" name="departureMode" required>
-          <option value="">Select a mode</option>
-          <option>Air</option>
-          <option>Bus</option>
-          <option>Train</option>
-        </select>
+        <div class="form-group">
+          <label for="departureMode">Mode of journey <span aria-hidden="true">*</span></label>
+          <select id="departureMode" name="departureMode" required>
+            <option value="">Select a mode</option>
+            <option value="Air">Air</option>
+            <option value="Bus">Bus</option>
+            <option value="Train">Train</option>
+          </select>
+        </div>
 
-        <label for="departureNumber">Flight / bus / train number</label>
-        <input id="departureNumber" name="departureNumber">
+        <div class="form-group">
+          <label for="departureNumber">Flight / bus / train number</label>
+          <input type="text" id="departureNumber" name="departureNumber">
+        </div>
       </section>
 
       <section>
         <h2>Contact and other information</h2>
 
-        <label for="contactNumber">Contact number <span aria-hidden="true">*</span></label>
-        <input id="contactNumber" name="contactNumber" type="tel"
-               autocomplete="tel" required>
+        <div class="form-group">
+          <label for="contactNumber">Contact number <span aria-hidden="true">*</span></label>
+          <input id="contactNumber" name="contactNumber" type="tel" autocomplete="tel" required>
+        </div>
 
-        <label for="email">Email address <span aria-hidden="true">*</span></label>
-        <input id="email" name="email" type="email"
-               autocomplete="email" required>
+        <div class="form-group">
+          <label for="email">Email address <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
 
-        <label for="notes">Suggestions or medications, if any</label>
-        <textarea id="notes" name="notes" rows="4"></textarea>
+        <!-- This form group uses a dedicated modifier class to span across both grid columns -->
+        <div class="form-group full-width">
+          <label for="notes">Suggestions or medications, if any</label>
+          <textarea id="notes" name="notes" rows="4"></textarea>
+        </div>
       </section>
 
       <button id="submit-button" type="submit">Submit details</button>
       <p id="status" class="status" role="status" aria-live="polite"></p>
+      
       <p class="privacy-note">
         Your information will be sent to the event organizer. Please share
         medication details only if necessary.
