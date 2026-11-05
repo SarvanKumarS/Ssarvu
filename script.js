@@ -1,75 +1,47 @@
-// Simple multiplication behavior for the page
-(function(){
-  const form = document.getElementById('multForm');
-  const aInput = document.getElementById('a');
-  const bInput = document.getElementById('b');
-  const resultEl = document.getElementById('value');
-  const clearBtn = document.getElementById('clear');
+// Replace this with the deployed Google Apps Script web app URL.
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-  // Format number for display with up to 12 significant digits (avoids long floating noise)
-  function formatNumber(n){
-    if (!isFinite(n)) return String(n);
-    // Try to keep integer-looking results clean
-    if (Math.abs(n) >= 1 && Number.isInteger(n)) return n.toString();
-    // Use toPrecision but remove trailing zeros
-    let s = Number(n).toPrecision(12);
-    // remove trailing zeros and possible trailing dot
-    s = s.replace(/(?:\.0+|(\.\d+?)0+)$/, '$1');
-    return s;
+const form = document.querySelector("#officer-form");
+const statusMessage = document.querySelector("#status");
+const submitButton = document.querySelector("#submit-button");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  if (SCRIPT_URL === "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE") {
+    showStatus("The form is not connected yet. Please contact the organizer.", true);
+    return;
   }
 
-  function showResult(text, ok = true){
-    resultEl.textContent = text;
-    resultEl.style.color = ok ? '' : 'var(--danger)';
-  }
+  submitButton.disabled = true;
+  showStatus("Sending your details…");
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const a = aInput.value;
-    const b = bInput.value;
-
-    // Basic validation
-    if (a === '' || b === '') {
-      showResult('Please enter both numbers', false);
-      return;
-    }
-
-    const aNum = Number(a);
-    const bNum = Number(b);
-
-    if (!isFinite(aNum) || !isFinite(bNum)) {
-      showResult('Invalid number', false);
-      return;
-    }
-
-    const product = aNum * bNum;
-    showResult(formatNumber(product), true);
-  });
-
-  clearBtn.addEventListener('click', function(){
-    aInput.value = '';
-    bInput.value = '';
-    showResult('—');
-    aInput.focus();
-  });
-
-  // Improve UX: show running product as numbers change (optional, live)
-  [aInput, bInput].forEach(input =>{
-    input.addEventListener('input', function(){
-      const a = aInput.value, b = bInput.value;
-      if (a === '' || b === '') {
-        showResult('—');
-        return;
-      }
-      const aNum = Number(a), bNum = Number(b);
-      if (!isFinite(aNum) || !isFinite(bNum)) {
-        showResult('Invalid number', false);
-        return;
-      }
-      showResult(formatNumber(aNum * bNum));
+  try {
+    // Apps Script handles this simple form-encoded request. In no-cors mode,
+    // the browser does not expose the server response to this page.
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: new URLSearchParams(new FormData(form))
     });
-  });
 
-  // Initialize
-  showResult('—');
-})();
+    form.reset();
+    showStatus(
+      "Your submission was sent. If you have any doubt, please contact the organizer."
+    );
+  } catch (error) {
+    showStatus(
+      "We couldn't send your details. Please check your connection and try again.",
+      true
+    );
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+function showStatus(message, isError = false) {
+  statusMessage.textContent = message;
+  statusMessage.className = `status ${isError ? "error" : "success"}`;
+}
