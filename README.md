@@ -1,2 +1,2 @@
 # ESIC SRO
-Mysore OL Conference dec 20266
+Mysore OL Conference Dec 20266
