@@ -10,7 +10,7 @@ form.addEventListener("submit", async (event) => {
 
   if (!form.reportValidity()) return;
 
-  if (SCRIPT_URL === "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE") {
+  if (SCRIPT_URL === "1GsuWnLsI0OyM1JERUHF2pcmJKTVUTI9K4j1YtXY8iVY") {
     showStatus("The form is not connected yet. Please contact the organizer.", true);
     return;
   }
