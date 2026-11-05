@@ -39,7 +39,7 @@ header p,
   line-height: 1.5;
 }
 
-/* IMPROVED: Responsive layout for form groupings */
+/* Responsive grid layout for sections */
 section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -50,25 +50,23 @@ section {
   border-radius: 10px;
 }
 
-/* Makes the main section headings span across both columns */
+/* Makes the h2 titles span across both columns */
 section h2 {
   grid-column: 1 / -1;
   margin: 0 0 4px;
   font-size: 1.15rem;
 }
 
-/* Keeps textareas like 'Notes' spanning full width */
-section textarea, 
-section label[for="notes"],
-section label[for="notes"] + textarea {
-  grid-column: 1 / -1;
-}
-
-/* Helper container styling if you choose to wrap label+input pairs */
+/* Form group flexbox wrapper */
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+/* FIXED: Target the wrapper container to force full-width spanning on the grid */
+.form-group.full-width {
+  grid-column: 1 / -1;
 }
 
 label {
@@ -105,7 +103,7 @@ button:focus-visible {
 }
 
 button {
-  width: 100%; /* Ensures the button handles full width gracefully */
+  width: 100%;
   min-height: 46px;
   padding: 10px 18px;
   border: 0;
