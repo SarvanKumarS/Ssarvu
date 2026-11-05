@@ -39,22 +39,39 @@ header p,
   line-height: 1.5;
 }
 
+/* IMPROVED: Responsive layout for form groupings */
 section {
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px 20px;
   margin: 24px 0;
-  padding: 20px;
+  padding: 24px;
   border: 1px solid #eaecf0;
   border-radius: 10px;
 }
 
-h2 {
-  margin: 0 0 6px;
+/* Makes the main section headings span across both columns */
+section h2 {
+  grid-column: 1 / -1;
+  margin: 0 0 4px;
   font-size: 1.15rem;
 }
 
+/* Keeps textareas like 'Notes' spanning full width */
+section textarea, 
+section label[for="notes"],
+section label[for="notes"] + textarea {
+  grid-column: 1 / -1;
+}
+
+/* Helper container styling if you choose to wrap label+input pairs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 label {
-  margin-top: 6px;
   font-weight: 600;
 }
 
@@ -88,6 +105,7 @@ button:focus-visible {
 }
 
 button {
+  width: 100%; /* Ensures the button handles full width gracefully */
   min-height: 46px;
   padding: 10px 18px;
   border: 0;
@@ -97,6 +115,7 @@ button {
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  margin-bottom: 16px;
 }
 
 button:hover {
@@ -111,6 +130,7 @@ button:disabled {
 .status {
   min-height: 1.5em;
   font-weight: 600;
+  margin: 8px 0 16px;
 }
 
 .status.error {
@@ -137,5 +157,6 @@ button:disabled {
 
   section {
     padding: 16px;
+    gap: 12px;
   }
 }
