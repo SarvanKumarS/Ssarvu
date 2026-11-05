@@ -1,39 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Simple Multiplier</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Officer Travel Details</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="container" aria-live="polite">
-    <h1>Simple Multiplier</h1>
+  <main class="container">
+    <header>
+      <h1>Officer Travel Details</h1>
+      <p>Please complete this form with your contact and travel information.</p>
+    </header>
 
-    <form id="multForm" class="card" aria-describedby="resultLabel">
-      <div class="field">
-        <label for="a">Number A</label>
-        <input type="number" id="a" name="a" step="any" required inputmode="decimal" />
-      </div>
+    <form id="officer-form">
+      <section>
+        <h2>Officer information</h2>
 
-      <div class="field">
-        <label for="b">Number B</label>
-        <input type="number" id="b" name="b" step="any" required inputmode="decimal" />
-      </div>
+        <label for="name">Name <span aria-hidden="true">*</span></label>
+        <input id="name" name="name" autocomplete="name" required>
 
-      <div class="buttons">
-        <button type="submit" id="multiply">Multiply</button>
-        <button type="button" id="clear">Clear</button>
-      </div>
+        <label for="designation">Designation <span aria-hidden="true">*</span></label>
+        <input id="designation" name="designation" required>
+
+        <label for="employeeId">Employee ID <span aria-hidden="true">*</span></label>
+        <input id="employeeId" name="employeeId" required>
+
+        <label for="gender">Male / Female</label>
+        <select id="gender" name="gender">
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Prefer not to say</option>
+        </select>
+
+        <label for="office">Office <span aria-hidden="true">*</span></label>
+        <input id="office" name="office" required>
+      </section>
+
+      <section>
+        <h2>Expected arrival at Mysore</h2>
+
+        <label for="arrivalDate">Date <span aria-hidden="true">*</span></label>
+        <input id="arrivalDate" name="arrivalDate" type="date" required>
+
+        <label for="arrivalTime">Time <span aria-hidden="true">*</span></label>
+        <input id="arrivalTime" name="arrivalTime" type="time" required>
+
+        <label for="arrivalMode">Mode of journey <span aria-hidden="true">*</span></label>
+        <select id="arrivalMode" name="arrivalMode" required>
+          <option value="">Select a mode</option>
+          <option>Air</option>
+          <option>Bus</option>
+          <option>Train</option>
+        </select>
+
+        <label for="arrivalNumber">Flight / bus / train number</label>
+        <input id="arrivalNumber" name="arrivalNumber">
+      </section>
+
+      <section>
+        <h2>Expected departure from Mysore</h2>
+
+        <label for="departureDate">Date <span aria-hidden="true">*</span></label>
+        <input id="departureDate" name="departureDate" type="date" required>
+
+        <label for="departureTime">Time <span aria-hidden="true">*</span></label>
+        <input id="departureTime" name="departureTime" type="time" required>
+
+        <label for="departureMode">Mode of journey <span aria-hidden="true">*</span></label>
+        <select id="departureMode" name="departureMode" required>
+          <option value="">Select a mode</option>
+          <option>Air</option>
+          <option>Bus</option>
+          <option>Train</option>
+        </select>
+
+        <label for="departureNumber">Flight / bus / train number</label>
+        <input id="departureNumber" name="departureNumber">
+      </section>
+
+      <section>
+        <h2>Contact and other information</h2>
+
+        <label for="contactNumber">Contact number <span aria-hidden="true">*</span></label>
+        <input id="contactNumber" name="contactNumber" type="tel"
+               autocomplete="tel" required>
+
+        <label for="email">Email address <span aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email"
+               autocomplete="email" required>
+
+        <label for="notes">Suggestions or medications, if any</label>
+        <textarea id="notes" name="notes" rows="4"></textarea>
+      </section>
+
+      <button id="submit-button" type="submit">Submit details</button>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <p class="privacy-note">
+        Your information will be sent to the event organizer. Please share
+        medication details only if necessary.
+      </p>
     </form>
-
-    <div id="result" class="result" role="status" aria-atomic="true">
-      <p id="resultLabel">Result: <span id="value">—</span></p>
-    </div>
-
-    <p class="note">Tip: you can press Enter in any input to multiply.</p>
   </main>
-
-  <script src="script.js" defer></script>
 </body>
 </html>
