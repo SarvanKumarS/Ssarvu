@@ -1,5 +1,5 @@
 // Replace this with the deployed Google Apps Script web app URL.
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuLerBcaEUbMwoVBCHjmspWtQyWwIj5pYUJtzvnq1rCPEiqfhXTHAFtAUXmWEfFQLl/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLsm4qS9PuF7YBD8Jgjqx6tT8KXJ5KE8Z-gRY5l_tFttnlfHkxYjxTt8nlvPF-tW50/exec";
 
 const form = document.querySelector("#officer-form");
 const statusMessage = document.querySelector("#status");
